@@ -1,331 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hey bestie 💌</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Someone Awesome ❤️</title>
 
-    :root {
-      --pink: #ff6b9d;
-      --rose: #ff3d7f;
-      --lavender: #c084fc;
-      --soft: #fff0f6;
-      --card: #ffffff;
-      --text: #3d1a2e;
-      --muted: #8f5a72;
-    }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #fde7f3 0%, #f3d9fa 50%, #dbeafe 100%);
-      font-family: 'Nunito', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+    font-family:'Segoe UI',sans-serif;
+}
 
-    /* Floating hearts background */
-    .hearts-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .heart-float {
-      position: absolute;
-      bottom: -60px;
-      font-size: 1.6rem;
-      animation: floatUp linear infinite;
-      opacity: 0;
-    }
-    @keyframes floatUp {
-      0%   { transform: translateY(0) rotate(-10deg) scale(0.8); opacity: 0; }
-      10%  { opacity: 0.7; }
-      80%  { opacity: 0.5; }
-      100% { transform: translateY(-110vh) rotate(15deg) scale(1.2); opacity: 0; }
-    }
+.hearts{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
 
-    /* Card */
-    .card {
-      background: var(--card);
-      border-radius: 32px;
-      padding: 48px 44px 40px;
-      max-width: 520px;
-      width: 92%;
-      box-shadow: 0 24px 80px rgba(255,61,127,0.18), 0 4px 20px rgba(192,132,252,0.15);
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      animation: cardIn 0.7s cubic-bezier(.34,1.56,.64,1) both;
-    }
-    @keyframes cardIn {
-      from { opacity: 0; transform: scale(0.75) translateY(40px); }
-      to   { opacity: 1; transform: scale(1) translateY(0); }
-    }
+.heart{
+    position:absolute;
+    bottom:-50px;
+    color:rgba(255,255,255,0.8);
+    animation:float 8s linear infinite;
+}
 
-    /* Big pulsing heart */
-    .big-heart {
-      font-size: 80px;
-      display: inline-block;
-      animation: heartbeat 1.3s ease-in-out infinite;
-      margin-bottom: 16px;
-      filter: drop-shadow(0 4px 16px rgba(255,61,127,0.4));
+@keyframes float{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
     }
-    @keyframes heartbeat {
-      0%   { transform: scale(1); }
-      14%  { transform: scale(1.18); }
-      28%  { transform: scale(1); }
-      42%  { transform: scale(1.12); }
-      56%  { transform: scale(1); }
-      100% { transform: scale(1); }
+    20%{opacity:1;}
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
     }
+}
 
-    .tag {
-      background: linear-gradient(90deg, #ff6b9d, #c084fc);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 5px 18px;
-      border-radius: 50px;
-      display: inline-block;
-      margin-bottom: 18px;
-    }
+.container{
+    position:relative;
+    text-align:center;
+}
 
-    h1 {
-      font-family: 'Pacifico', cursive;
-      font-size: 2rem;
-      color: var(--rose);
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
+.envelope{
+    width:280px;
+    height:180px;
+    background:#ff6b81;
+    position:relative;
+    cursor:pointer;
+    border-radius:8px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    transition:0.5s;
+}
 
-    .subtitle {
-      font-size: 14px;
-      color: var(--lavender);
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 28px;
-    }
+.envelope:hover{
+    transform:scale(1.05);
+}
 
-    .message-box {
-      background: var(--soft);
-      border-radius: 20px;
-      padding: 24px 28px;
-      text-align: left;
-      position: relative;
-      margin-bottom: 28px;
-      border: 1.5px solid rgba(255,107,157,0.2);
-    }
-    .message-box p {
-      color: var(--text);
-      font-size: 15.5px;
-      line-height: 1.8;
-      font-weight: 600;
-    }
-    .message-box p + p { margin-top: 14px; }
+.flap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:0;
+    height:0;
+    border-left:140px solid transparent;
+    border-right:140px solid transparent;
+    border-top:90px solid #ff4757;
+    transform-origin:top;
+    transition:1s;
+    z-index:3;
+}
 
-    .message-box::before {
-      content: '❝';
-      font-size: 48px;
-      color: rgba(255,107,157,0.18);
-      position: absolute;
-      top: 8px;
-      left: 12px;
-      line-height: 1;
-      font-family: Georgia, serif;
-    }
+.letter{
+    position:absolute;
+    left:15px;
+    top:15px;
+    width:250px;
+    height:150px;
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    text-align:left;
+    overflow:auto;
+    transition:1s;
+    z-index:1;
+}
 
-    /* Emoji burst strip */
-    .emoji-strip {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 26px;
-    }
-    .emoji-chip {
-      background: #fff0f6;
-      border: 1.5px solid rgba(255,107,157,0.25);
-      border-radius: 50px;
-      padding: 6px 16px;
-      font-size: 20px;
-      animation: chipWobble 2.5s ease-in-out infinite;
-    }
-    .emoji-chip:nth-child(2) { animation-delay: 0.4s; }
-    .emoji-chip:nth-child(3) { animation-delay: 0.8s; }
-    .emoji-chip:nth-child(4) { animation-delay: 1.2s; }
-    .emoji-chip:nth-child(5) { animation-delay: 1.6s; }
-    @keyframes chipWobble {
-      0%, 100% { transform: rotate(-3deg) scale(1); }
-      50%       { transform: rotate(3deg) scale(1.05); }
-    }
+.open .flap{
+    transform:rotateX(180deg);
+}
 
-    /* CTA button */
-    .cta-btn {
-      display: inline-block;
-      background: linear-gradient(135deg, #ff6b9d 0%, #c084fc 100%);
-      color: #fff;
-      font-family: 'Nunito', sans-serif;
-      font-size: 15px;
-      font-weight: 800;
-      padding: 14px 38px;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 8px 24px rgba(255,61,127,0.35);
-      transition: transform 0.15s, box-shadow 0.15s;
-      letter-spacing: 0.5px;
-      text-decoration: none;
-    }
-    .cta-btn:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 14px 32px rgba(255,61,127,0.45); }
-    .cta-btn:active { transform: scale(0.97); }
+.open .letter{
+    transform:translateY(-170px);
+}
 
-    .footer-note {
-      margin-top: 20px;
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 700;
-    }
+h2{
+    color:#ff4757;
+    text-align:center;
+    margin-bottom:10px;
+}
 
-    /* Confetti burst on click */
-    .confetti-piece {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      border-radius: 2px;
-      pointer-events: none;
-      z-index: 999;
-      animation: confettiFall 1.2s ease-out forwards;
-    }
-    @keyframes confettiFall {
-      0%   { opacity: 1; transform: translateY(0) rotate(0deg); }
-      100% { opacity: 0; transform: translateY(240px) rotate(720deg); }
-    }
+.click-text{
+    margin-top:20px;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    animation:pulse 1.5s infinite;
+}
 
-    /* Sparkles */
-    .sparkle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: #ff6b9d;
-      border-radius: 50%;
-      pointer-events: none;
-      animation: sparklePop 1s ease-out forwards;
-    }
-    @keyframes sparklePop {
-      0%   { transform: scale(0) translate(0, 0); opacity: 1; }
-      100% { transform: scale(1) translate(var(--tx), var(--ty)); opacity: 0; }
-    }
-  </style>
+@keyframes pulse{
+    50%{transform:scale(1.1);}
+}
+</style>
 </head>
 <body>
 
-  <!-- Floating hearts background -->
-  <div class="hearts-bg" id="heartsBg"></div>
+<div class="hearts"></div>
 
-  <div class="card" id="card">
-    <div class="big-heart" id="bigHeart">💖</div>
-    <div class="tag">✨ just for you ✨</div>
-    <h1>Hey Bestie!</h1>
-    <p class="subtitle">A message that absolutely needed to be made into a whole website 😌</p>
+<div class="container">
+    <div class="envelope" onclick="openLetter()">
+        <div class="flap"></div>
 
-    <div class="message-box">
-      <p>Okay so I could've just texted you this... but where's the drama in that?
-      You deserve a whole website, a floating heart background, and a pulsing emoji. Obviously.</p>
+        <div class="letter">
+            <h2>Hey You! 🌸</h2>
 
-      <p>You're the kind of friend who makes everything 10x more fun — even doing absolutely
-      nothing. Genuinely terrifying how much chaos we create together. 🔥</p>
+            <p>
+                Just a quick reminder:
+                you're doing better than you think. 💖
+                <br><br>
 
-      <p>So yeah. This is me saying you're awesome, I appreciate you, and also
-      please stop being funnier than me. It's embarrassing for both of us. 😂💕</p>
+                If life is acting like it's written by a chaotic scriptwriter,
+                remember that even Wi-Fi reconnects after disconnecting. 😂
+                <br><br>
+
+                Keep smiling, keep shining, and keep being the wonderful person you are.
+                <br><br>
+
+                Also... if there were an award for being effortlessly awesome,
+                you'd probably win it while being late to collect it. 😆
+                <br><br>
+
+                And yes,
+                you're one of my favorite humans and a person I absolutely adore. ❤️
+            </p>
+        </div>
     </div>
 
-    <div class="emoji-strip">
-      <span class="emoji-chip">🎀</span>
-      <span class="emoji-chip">✨</span>
-      <span class="emoji-chip">💌</span>
-      <span class="emoji-chip">🌸</span>
-      <span class="emoji-chip">🥹</span>
+    <div class="click-text">
+        💌 Click the envelope
     </div>
+</div>
 
-    <button class="cta-btn" id="ctaBtn" onclick="boom()">
-      Send some love back 💗
-    </button>
+<script>
+function openLetter(){
+    document.querySelector(".envelope").classList.toggle("open");
+}
 
-    <p class="footer-note">made with 💖 just for you — no cap</p>
-  </div>
+for(let i=0;i<25;i++){
+    let heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤";
+    heart.style.left=Math.random()*100+"%";
+    heart.style.fontSize=(15+Math.random()*25)+"px";
+    heart.style.animationDuration=(5+Math.random()*5)+"s";
+    heart.style.animationDelay=Math.random()*5+"s";
+    document.querySelector(".hearts").appendChild(heart);
+}
+</script>
 
-  <script>
-    const emojis = ['❤️','💕','💖','💗','💓','🌸','✨','💫','🥰','😍'];
-    const colors = ['#ff6b9d','#c084fc','#ff3d7f','#fbbf24','#34d399','#60a5fa'];
-
-    function spawnHearts() {
-      const bg = document.getElementById('heartsBg');
-      for (let i = 0; i < 18; i++) {
-        const el = document.createElement('span');
-        el.className = 'heart-float';
-        el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        el.style.left = Math.random() * 100 + 'vw';
-        const dur = 6 + Math.random() * 8;
-        el.style.animationDuration = dur + 's';
-        el.style.animationDelay = Math.random() * dur + 's';
-        el.style.fontSize = (1.2 + Math.random() * 1.6) + 'rem';
-        bg.appendChild(el);
-      }
-    }
-    spawnHearts();
-
-    function boom() {
-      const btn = document.getElementById('ctaBtn');
-      const rect = btn.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-
-      for (let i = 0; i < 28; i++) {
-        const p = document.createElement('div');
-        p.className = 'confetti-piece';
-        p.style.left = (cx - 5 + (Math.random() - 0.5) * 80) + 'px';
-        p.style.top = (cy - 5) + 'px';
-        p.style.background = colors[Math.floor(Math.random() * colors.length)];
-        p.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-        p.style.transform = `translateX(${(Math.random()-0.5)*160}px)`;
-        p.style.animationDelay = Math.random() * 0.3 + 's';
-        document.body.appendChild(p);
-        setTimeout(() => p.remove(), 1600);
-      }
-
-      // Temporarily change button text
-      btn.textContent = '🥰 aww you\'re sweet too!';
-      btn.style.background = 'linear-gradient(135deg, #c084fc 0%, #ff6b9d 100%)';
-      setTimeout(() => {
-        btn.textContent = 'Send some love back 💗';
-        btn.style.background = '';
-      }, 2200);
-    }
-
-    // Extra hearts on card click
-    document.getElementById('bigHeart').addEventListener('click', function(e) {
-      for (let i = 0; i < 8; i++) {
-        const sp = document.createElement('div');
-        sp.className = 'sparkle';
-        const angle = (i / 8) * 2 * Math.PI;
-        sp.style.setProperty('--tx', Math.cos(angle) * 60 + 'px');
-        sp.style.setProperty('--ty', Math.sin(angle) * 60 + 'px');
-        sp.style.left = e.clientX + 'px';
-        sp.style.top = e.clientY + 'px';
-        sp.style.background = colors[Math.floor(Math.random() * colors.length)];
-        document.body.appendChild(sp);
-        setTimeout(() => sp.remove(), 1100);
-      }
-    });
-  </script>
 </body>
 </html>
