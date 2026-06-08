@@ -1,304 +1,161 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Someone Amazing ❤️</title>
-
+<title>heyyyyy amazingggg 🌸</title>
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-    height:100vh;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#ffd6e7,#ff9fb3);
-    font-family:'Segoe UI',sans-serif;
+height:100vh;overflow:hidden;
+display:flex;justify-content:center;align-items:center;
+font-family:Segoe UI,sans-serif;
+background:linear-gradient(135deg,#ffd6e7,#ffc2d1,#ffe5ec);
 }
-
-.hearts-bg{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
+.bg{position:fixed;inset:0;overflow:hidden}
+.fh{position:absolute;bottom:-50px;animation:up linear infinite;color:white}
+@keyframes up{
+from{transform:translateY(0) rotate(0);opacity:0}
+20%{opacity:1}
+to{transform:translateY(-120vh) rotate(360deg);opacity:0}
 }
-
-.floating-heart{
-    position:absolute;
-    bottom:-50px;
-    color:white;
-    opacity:.8;
-    animation:floatUp linear infinite;
+.wrap{text-align:center;position:relative}
+h1{
+color:white;text-shadow:0 4px 12px rgba(0,0,0,.15);
+margin-bottom:25px;
+animation:floaty 3s ease-in-out infinite;
 }
-
-@keyframes floatUp{
-    from{
-        transform:translateY(0) rotate(0deg);
-        opacity:0;
-    }
-    20%{
-        opacity:1;
-    }
-    to{
-        transform:translateY(-120vh) rotate(360deg);
-        opacity:0;
-    }
-}
-
-.container{
-    text-align:center;
-    position:relative;
-}
-
-.title{
-    color:white;
-    font-size:3rem;
-    margin-bottom:30px;
-    text-shadow:0 4px 12px rgba(0,0,0,.2);
-    animation:titleFloat 3s ease-in-out infinite;
-}
-
-@keyframes titleFloat{
-    50%{
-        transform:translateY(-10px);
-    }
-}
+@keyframes floaty{50%{transform:translateY(-8px)}}
 
 .envelope{
-    width:420px;
-    height:280px;
-    background:#ff6b81;
-    position:relative;
-    margin:auto;
-    cursor:pointer;
-    border-radius:15px;
-    box-shadow:0 15px 40px rgba(0,0,0,.25);
-    transition:.5s;
+width:420px;height:270px;position:relative;cursor:pointer;
+animation:bob 3s ease-in-out infinite;
 }
+@keyframes bob{50%{transform:translateY(-10px)}}
 
-.envelope:hover{
-    transform:scale(1.03);
+.back{
+position:absolute;inset:0;border-radius:18px;
+background:linear-gradient(135deg,#ff8fab,#ff7096);
+box-shadow:0 20px 50px rgba(0,0,0,.2);
+}
+.back::after{
+content:"💖";position:absolute;left:50%;top:50%;
+transform:translate(-50%,-50%);font-size:64px;
 }
 
 .flap{
-    position:absolute;
-    top:0;
-    left:0;
-    width:0;
-    height:0;
-    border-left:210px solid transparent;
-    border-right:210px solid transparent;
-    border-top:140px solid #ff4d6d;
-    transform-origin:top;
-    transition:1s;
-    z-index:5;
+position:absolute;
+width:0;height:0;z-index:4;
+border-left:210px solid transparent;
+border-right:210px solid transparent;
+border-top:140px solid #ff5c8a;
+transform-origin:top;
+transition:1s;
+}
+
+.label{
+position:absolute;width:100%;top:175px;z-index:5;
+color:white;font-size:28px;font-weight:bold;
 }
 
 .letter{
-    position:absolute;
-    left:20px;
-    top:20px;
-    width:380px;
-    height:240px;
-    background:white;
-    border-radius:15px;
-    padding:20px;
-    overflow:auto;
-    text-align:left;
-    z-index:1;
-    transition:1s;
-    box-shadow:0 10px 20px rgba(0,0,0,.1);
+position:absolute;
+left:20px;top:20px;
+width:380px;min-height:320px;height:auto;
+background:white;border-radius:16px;
+padding:20px;text-align:left;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+z-index:10;
+transition:1.2s cubic-bezier(.22,1,.36,1);
 }
 
-.envelope-text{
-    position:absolute;
-    width:100%;
-    text-align:center;
-    top:175px;
-    color:white;
-    font-size:2rem;
-    font-weight:bold;
-    z-index:4;
-    transition:.5s;
-}
+.open .flap{transform:rotateX(180deg)}
+.open .letter{transform:translateY(-430px) scale(1.05)}
+.open .label{opacity:0}
 
-.open .flap{
-    transform:rotateX(180deg);
-}
+h2{color:#ff5c8a;margin-bottom:10px}
+p{line-height:1.5}
 
-.open .letter{
-    transform:translateY(-320px);
-}
-
-.open .envelope-text{
-    opacity:0;
-}
-
-h2{
-    color:#ff4d6d;
-    margin-bottom:10px;
-}
-
-.click-note{
-    margin-top:20px;
-    color:white;
-    font-size:1.2rem;
-    animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-    50%{
-        transform:scale(1.08);
-    }
-}
+.note{margin-top:20px;color:white;font-weight:bold}
 </style>
-
 </head>
-
 <body>
+<div class="bg" id="bg"></div>
 
-<div class="hearts-bg" id="heartsBg"></div>
+<div class="wrap">
+<h1>🌸 A Tiny Message For You 🌸</h1>
 
-<div class="container">
+<div class="envelope" id="env" onclick="openLetter()">
+<div class="back"></div>
+<div class="flap"></div>
 
-```
-<h1 class="title">
-    🌸 For Someone Amazing 🌸
-</h1>
+<div class="letter">
+<h2>Hey You 👋</h2>
+<p>
+Just a quick reminder that you're doing great. 😊<br><br>
 
-<div class="envelope" onclick="toggleLetter()">
+If life feels confusing sometimes, don't worry. Even GPS says
+"recalculating" and still gets people where they need to go. 😂<br><br>
 
-    <div class="flap"></div>
+You have this weird talent of making people smile without even trying,
+which is honestly unfair to the rest of us. 😆<br><br>
 
-    <div class="letter">
+So drink some water, get some sleep, and stop being so hard on yourself.
+You're cooler than you think. 🌸✨<br><br>
 
-        <h2>Hey You ❤️</h2>
-
-        <p>
-            Just dropping this little letter to remind you that
-            you're genuinely awesome.
-            <br><br>
-
-            Life sometimes behaves like a badly coded program,
-            but somehow you still manage to make everything work. 😂
-            <br><br>
-
-            If today wasn't perfect, that's okay.
-            Even the moon has phases and people still stare at it.
-            🌙✨
-            <br><br>
-
-            Keep smiling.
-            Keep being kind.
-            Keep being the person who somehow makes everyone around
-            them feel a little happier.
-            <br><br>
-
-            Also, if there were an Olympic event for being adorable,
-            you'd probably win gold while claiming you weren't even trying. 🏅😂
-            <br><br>
-
-            And one more thing...
-            you're one of my favorite people and someone I truly adore. ❤️
-            <br><br>
-
-            Never forget how special you are. 🌸✨
-        </p>
-
-    </div>
-
-    <div class="envelope-text">
-        💌 OPEN ME 💌
-    </div>
-
+And if today wasn't perfect, that's okay.
+Tomorrow is basically a free trial of another chance. 💖
+</p>
 </div>
 
-<div class="click-note">
-    Click the envelope ✨
+<div class="label">💌 OPEN ME 💌</div>
 </div>
-```
 
+<div class="note">Click the envelope ✨</div>
 </div>
 
 <script>
-
-// Floating background hearts
-for(let i=0;i<35;i++){
-
-    const heart=document.createElement("div");
-    heart.className="floating-heart";
-    heart.innerHTML="❤️";
-
-    heart.style.left=Math.random()*100+"%";
-    heart.style.fontSize=(15+Math.random()*30)+"px";
-    heart.style.animationDuration=(6+Math.random()*8)+"s";
-    heart.style.animationDelay=Math.random()*8+"s";
-
-    document.getElementById("heartsBg").appendChild(heart);
+for(let i=0;i<30;i++){
+ let h=document.createElement('div');
+ h.className='fh';
+ h.innerHTML='❤️';
+ h.style.left=Math.random()*100+'%';
+ h.style.fontSize=(14+Math.random()*24)+'px';
+ h.style.animationDuration=(6+Math.random()*8)+'s';
+ h.style.animationDelay=Math.random()*6+'s';
+ document.getElementById('bg').appendChild(h);
 }
 
-function createHeartBurst(){
+function burst(){
+ for(let i=0;i<40;i++){
+  const h=document.createElement('div');
+  h.innerHTML='💖';
+  h.style.position='fixed';
+  h.style.left='50%';
+  h.style.top='50%';
+  h.style.fontSize=(18+Math.random()*22)+'px';
+  h.style.zIndex='9999';
+  document.body.appendChild(h);
 
-    for(let i=0;i<40;i++){
+  const a=Math.random()*Math.PI*2;
+  const d=220+Math.random()*280;
 
-        const heart=document.createElement("div");
+  h.animate([
+   {transform:'translate(-50%,-50%) scale(0)',opacity:1},
+   {transform:`translate(calc(-50% + ${Math.cos(a)*d}px),calc(-50% + ${Math.sin(a)*d}px)) scale(1.6)`,opacity:0}
+  ],{duration:2200,easing:'ease-out'});
 
-        heart.innerHTML="💖";
-        heart.style.position="fixed";
-        heart.style.left="50%";
-        heart.style.top="50%";
-        heart.style.fontSize=(18+Math.random()*25)+"px";
-        heart.style.pointerEvents="none";
-        heart.style.zIndex="9999";
-
-        document.body.appendChild(heart);
-
-        const angle=Math.random()*Math.PI*2;
-        const distance=250+Math.random()*350;
-
-        heart.animate(
-        [
-            {
-                transform:"translate(-50%,-50%) scale(0)",
-                opacity:1
-            },
-            {
-                transform:`translate(
-                calc(-50% + ${Math.cos(angle)*distance}px),
-                calc(-50% + ${Math.sin(angle)*distance}px)
-                ) scale(1.8)`,
-                opacity:0
-            }
-        ],
-        {
-            duration:2500,
-            easing:"ease-out"
-        });
-
-        setTimeout(()=>{
-            heart.remove();
-        },2500);
-    }
+  setTimeout(()=>h.remove(),2200);
+ }
 }
 
-function toggleLetter(){
-
-    const envelope=document.querySelector(".envelope");
-
-    if(!envelope.classList.contains("open")){
-        createHeartBurst();
-    }
-
-    envelope.classList.toggle("open");
+function openLetter(){
+ const e=document.getElementById('env');
+ if(!e.classList.contains('open')){
+   burst();
+   e.classList.add('open');
+ }
 }
 </script>
-
 </body>
 </html>
